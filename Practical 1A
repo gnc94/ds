@@ -1,0 +1,28 @@
+ #include<stdio.h>
+ #include<malloc.h>
+ int arr[7];
+ void inputdata();
+ void printdata();
+ int main()
+ {
+ 	inputdata();
+ 	printdata();
+ }
+ void inputdata()
+ {
+ 	int i;
+ 	for (i=0;i<=6;i++)
+ 	{
+ 		printf("enter the %dth element:",i);
+ 		scanf("%d",& arr[i]);
+	 }
+ }
+ void printdata()
+ {
+ 	int i;
+ 	printf("Elements of array");
+ 	for (i=0;i<=6;i++)
+ 	{
+ 		printf("%d",arr[i]);
+	 }
+ }
