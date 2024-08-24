@@ -1,0 +1,108 @@
+#include<stdio.h>
+#include<malloc.h>
+
+int arr[10];
+void inputData();
+void printData();
+int search(int var);
+void sorting();
+void reversing();
+
+int main() {
+	int choice,var;
+	inputData();
+	 do{
+	 	printf("\n Print Menu \n");
+	 	printf("1 Display ");
+	 	printf("2 Search ");
+	 	printf("3 Sorting ");
+	 	printf("4 Reversing ");
+	 	printf("5 Exit ");
+	 	
+	 	printf("\n Enter your choice:- ");
+	 	scanf("%d",&choice);
+	 	
+	 	switch(choice){
+	 		case 1:{
+	 			printData();
+				break;
+			 }
+			case 2:{
+				printf("\n Enter the value to be searched:- ");
+				scanf("%d",&var);
+				int i;
+				i = search(var);
+				if(i == -1){
+					printf("Element %d is not found \n",var);
+				}else{
+					printf("Element %d is found at position:- %d",var,i+1);
+				}
+				break;
+			}
+			case 3:{
+				sorting();
+				break;
+			}
+			case 4:{
+				reversing();
+				break;
+			}
+			case 5:{
+				break;
+			}
+		 }
+	 }while(choice != 5);
+}
+
+void inputData(){
+	printf("Enter Array Element \n");
+	int i;
+	for(i = 0 ; i < 6 ; i++){
+		printf("Enter the %dth Element:= ",i);
+		scanf("%d",&arr[i]);
+	}
+}
+
+void printData(){
+	int i;
+	printf("Elements of array:= ");
+	for(i = 0 ; i < 6 ; i++){
+		printf("%d ",arr[i]);
+	}
+}
+
+int search(int var){
+	int i;
+	for(i = 0 ; i < 6 ; i++){
+		if(arr[i] == var){
+			return i;
+		}
+	}
+	if(i == 6){
+		return -1;
+	}
+}
+
+void sorting(){
+	int i , j,temp;
+	for(i = 0 ; i < 6 ; i++){
+		for(j = 0 ; j < 6-i-1;j++){
+			if(arr[j] > arr[j+1]){
+				temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+		}
+	}
+}
+
+void reversing(){
+	int i = 0, j = 5,temp;
+	while(i < j){
+		temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+		i++;
+		j--;
+	}
+}
