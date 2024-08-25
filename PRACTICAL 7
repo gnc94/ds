@@ -1,0 +1,86 @@
+#include <stdio.h>
+#define MAX 30
+
+int q[MAX];
+int front = -1;
+int rear = -1;
+
+void insert();
+int deleteq();
+void display();
+
+int main() {
+    int choice;
+    do {
+        printf("\n***** Main Menu *****\n");
+        printf("1. Insert\n");
+        printf("2. Delete\n");
+        printf("3. Display\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        
+        switch(choice) {
+            case 1:
+                insert();
+                break;
+            case 2:
+                deleteq();
+                break;
+            case 3:
+                display();
+                break;
+            case 4:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    } while (choice != 4);
+
+    return 0;
+}
+
+void insert() {
+    int val;
+    if (rear == MAX - 1) {
+        printf("Queue is full. Cannot insert.\n");
+    } else {
+        printf("Enter value to be inserted: ");
+        scanf("%d", &val);
+        if (front == -1) {
+            front = 0;  // Initialize front when the first element is inserted
+        }
+        q[++rear] = val;
+        printf("Value inserted successfully.\n");
+    }
+}
+
+int deleteq() {
+    if (front == -1) {
+        printf("Queue is empty. Cannot delete.\n");
+        return -1;
+    } else {
+        int val = q[front];
+        if (front == rear) {
+            // Reset the queue when all elements are deleted
+            front = rear = -1;
+        } else {
+            front++;
+        }
+        printf("Deleted value: %d\n", val);
+        return val;
+    }
+}
+
+void display() {
+    if (front == -1) {
+        printf("Queue is empty.\n");
+    } else {
+        printf("Queue elements: ");
+        for (int i = front; i <= rear; i++) {
+            printf("%d ", q[i]);
+        }
+        printf("\n");
+    }
+}
