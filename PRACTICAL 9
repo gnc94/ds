@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+// Function to print the linked list
+void printData(struct Node *ptr) {
+    while (ptr != NULL) {
+        printf("%d ", ptr->data);
+        ptr = ptr->next;
+    }
+    printf("\n");
+}
+
+int main() {
+    struct Node *head;
+    struct Node *second;
+    struct Node *third;
+    
+    // Allocating memory for nodes in the linked list
+    head = (struct Node*)malloc(sizeof(struct Node));
+    second = (struct Node*)malloc(sizeof(struct Node));
+    third = (struct Node*)malloc(sizeof(struct Node));
+    
+    // Setting up the data and links between nodes
+    head->data = 10;
+    head->next = second;
+    
+    second->data = 20;
+    second->next = third;
+    
+    third->data = 30;
+    third->next = NULL;
+    
+    // Printing the linked list
+    printData(head);
+    free(head);
+    free(second);
+    free(third);
+    
+    return 0;
+}
