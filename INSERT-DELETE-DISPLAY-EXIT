@@ -49,7 +49,7 @@ void insert() {
         printf("Enter value to be inserted: ");
         scanf("%d", &val);
         if (front == -1) {
-            front = 0;  // Initialize front when the first element is inserted
+            front = 0;
         }
         q[++rear] = val;
         printf("Value inserted successfully.\n");
@@ -63,7 +63,6 @@ int deleteq() {
     } else {
         int val = q[front];
         if (front == rear) {
-            // Reset the queue when all elements are deleted
             front = rear = -1;
         } else {
             front++;
